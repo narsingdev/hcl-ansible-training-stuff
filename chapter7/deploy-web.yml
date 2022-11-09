@@ -1,0 +1,6 @@
+---
+  - name: installing and configuring {{ web_svc }} server
+    hosts: web
+    roles:
+      - webserver
+      

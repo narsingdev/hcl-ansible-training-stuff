@@ -1,0 +1,8 @@
+---
+  - name: deploying pkg group
+    hosts: web
+    tasks:
+      - name: deploying Development Tools
+        yum:
+          name: "@Development Tools"
+          state: present

@@ -1,0 +1,14 @@
+---
+  - name: testing at module
+    hosts: web
+    tasks:
+      - name: installing at pkg
+        yum:
+          name: at
+          state: present
+      - name: deleting user after 20 min
+        at:
+          command: userdel -r bob
+          count: 20
+          units: minutes
+          unique: yes

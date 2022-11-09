@@ -1,0 +1,8 @@
+---
+  - name: installing some pkgs
+    hosts: all
+    tasks:
+      - name: installing git pkg
+        yum:
+          name: git
+          state: present

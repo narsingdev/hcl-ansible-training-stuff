@@ -1,0 +1,46 @@
+---
+  - name: configuring storage
+    hosts: all
+    tasks:
+      - name: creating parttion on /dev/sdc
+        parted: 
+          device: /dev/sdc
+          number: 1
+          state: present
+          part_end: 10GB
+
+      - name: creating vg001 volume group
+        lvg:
+          vg: vg001
+          pvs: /dev/sdc1
+          pesize: 32
+
+      - name: creating lv001 logical volume 
+        lvol:
+          vg: vg001
+          lv: lv001
+          size: 2g
+
+      - name: creating filesystem
+        filesystem:
+          fstype: xfs
+          device: /dev/vg001/lv001
+
+      - name: creating /volume1 folder
+        command: mkdir /volume1
+
+      - name: mounting lv001 under /volume1
+        mount:
+          path: /volume1
+          src: /dev/vg001/lv001
+          fstype: xfs
+          state: present
+
+      - name: reload config in memory
+        command: mount -a 
+
+
+
+
+
+

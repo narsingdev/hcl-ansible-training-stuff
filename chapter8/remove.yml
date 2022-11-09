@@ -1,0 +1,8 @@
+---
+  - name: removing pkgs
+    hosts: web
+    tasks:
+      - name: removing httpd pkg
+        yum:
+          name: httpd
+          state: absent

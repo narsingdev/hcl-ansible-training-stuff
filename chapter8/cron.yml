@@ -1,0 +1,11 @@
+---
+  - name: testing cron module
+    hosts: db
+    tasks:
+      - name: clearing yum cache
+        cron:
+          name: "flushing yum cache"
+          user: root
+          minute: '45'
+          hour: '11'
+          job: "yum clean all"

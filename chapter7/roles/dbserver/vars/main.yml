@@ -1,0 +1,4 @@
+---
+db_pkg: mariadb-server
+db_svc: mariadb
+db_rule: mysql

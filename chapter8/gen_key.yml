@@ -1,0 +1,9 @@
+---
+  - name: generating public/private key
+    hosts: web
+    tasks:
+      - name: generating key bob
+        user:
+          name: bob
+          generate_ssh_key: yes
+          ssh_key_bits: 2048

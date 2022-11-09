@@ -1,0 +1,16 @@
+---
+  - name: deploying local repo
+    hosts: all
+    tasks:
+      - name: adding local repo
+        yum_repository:
+          file: rhel-dvd
+          name: rhel7-pkgs
+          description: "RHEL 7.9 packages"
+          baseurl: http://work.lab.example.com/rhel7.9/x86_64/dvd/
+          enabled: yes
+          gpgcheck: 1
+      - name: adding repo key
+        rpm_key:
+          key: http://work.lab.example.com/rhel7.9/x86_64/dvd/RPM-GPG-KEY-redhat-release
+          state: present

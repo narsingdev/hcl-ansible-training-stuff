@@ -1,0 +1,7 @@
+---
+  - name: deploying motd
+    hosts: all
+    vars:
+      - system_owner: Hank Richardson
+    roles:
+      - narsingdev.motd_role

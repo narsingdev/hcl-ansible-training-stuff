@@ -1,0 +1,8 @@
+---
+  - name: updating all the pkgs
+    hosts: web
+    tasks:
+      - name: updating all the pkgs
+        yum:
+          name: "*"
+          state: latest

@@ -1,0 +1,5 @@
+---
+  - name: installing and configuring {{ db_pkg }} server
+    hosts: db
+    roles:
+      - dbserver

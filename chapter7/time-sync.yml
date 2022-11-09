@@ -1,0 +1,9 @@
+---
+  - name: configuring time sync role
+    hosts: all
+    vars:
+      timesync_ntp_servers:
+        - hostname: work.lab.example.com
+          iburst: yes
+    roles:
+      - rhel-system-roles.timesync
