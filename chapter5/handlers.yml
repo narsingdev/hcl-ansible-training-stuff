@@ -1,0 +1,25 @@
+---
+  - name: testing handlers
+    hosts: web
+    force_handlers: yes
+    tasks:
+      - name: copying index.html file
+        copy:
+          src: index.html
+          dest: /var/www/html/index.html
+        notify:
+          - restart httpd
+          - restart crond
+      - name: installing http pkg
+        yum:
+          name: http
+          state: present
+    handlers:
+      - name: restart httpd
+        service:
+          name: httpd
+          state: restarted
+      - name: restart crond
+        service:
+          name: crond
+          state: restarted

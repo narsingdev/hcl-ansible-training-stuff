@@ -1,0 +1,10 @@
+---
+  - name: based on available storage
+    hosts: web
+    tasks:
+      - name: install mariadb-server if 300 MB in the / partition
+        yum:
+          name: mariadb-server
+          state: present
+        loop: "{{ ansible_mounts }}"
+        when: item.mount == "/" and item.size_available > 300000000

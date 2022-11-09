@@ -1,0 +1,21 @@
+---
+  - name: creating directory
+    hosts: web
+    tasks:
+      - name: creating /home/admin/mydocs directory
+        file:
+          state: directory
+          recurse: yes
+          path: /home/admin/mydocs
+          owner: admin
+          group: admin
+          mode: '0770'
+          
+      - name: creating hello.txt file under /home/admin/mydocs
+        file:
+          state: touch
+          path: /home/admin/mydocs/hello.txt
+          owner: admin
+          group: admin
+          mode: '0770'
+

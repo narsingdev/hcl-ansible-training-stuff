@@ -1,0 +1,12 @@
+---
+  - name: testing multiple conditions
+    hosts: web
+    vars:
+    tasks:
+      - name: add user tom if conditions match
+        user:
+          name: tom
+          state: present
+        when: 
+          - ansible_distribution == "RedHat" 
+          - ansible_distribution_version == "7.9"

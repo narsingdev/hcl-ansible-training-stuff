@@ -1,0 +1,12 @@
+---
+  - name: creating user with password
+    hosts: web
+    vars_files:
+      - hank.yml
+    tasks:
+      - name: creating hank user & setting the password
+        user:
+          name: "{{ username }}"
+          password: "{{ pwdhash }}"
+          state: present
+        

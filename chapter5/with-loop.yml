@@ -1,0 +1,14 @@
+---
+  - name: creating bulk of users using loop
+    hosts: web
+    tasks:
+      - name: creating hank, jack, john, jenny & rick users
+        user:
+          name: "{{ item }}"
+          state: present
+        loop:
+          - hank  
+          - jack
+          - john
+          - jenny
+          - rick

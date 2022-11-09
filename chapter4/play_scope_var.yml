@@ -1,0 +1,26 @@
+---
+  - name: installing and configuring {{ pkg }} server
+    hosts: web
+    vars:
+      pkg: samba
+      svc: smb
+      rule: samba
+    tasks:
+      - name: installing {{ pkg }} package.
+        yum:
+          name: "{{ pkg }}"
+          state: present
+
+      - name: starting and enabling {{ svc }} service
+        service:
+          name: "{{ svc }}"
+          state: started
+          enabled: true
+
+      - name: opening {{ rule }} service in the firewall
+        firewalld:
+          service: "{{ rule }}"
+          state: enabled
+          permanent: true
+          immediate: true
+

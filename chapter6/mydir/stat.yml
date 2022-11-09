@@ -1,0 +1,12 @@
+---
+  - name: testing stat module
+    hosts: web
+    tasks:
+      - name: verify the checksum of the file
+        stat:
+          path: /home/admin/mydocs/hello.txt
+          checksum_algorithm: md5
+        register: result
+      - name: printing previous task's output
+        debug: 
+          msg: "The checksum of the file is: {{ result.stat.checksum }}"

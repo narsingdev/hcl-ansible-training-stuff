@@ -1,0 +1,22 @@
+---
+  - name: testing loop over list of hashes
+    hosts: web
+    tasks:
+      - name: creating developers & testers groups
+        group:
+          name: "{{ item }}"
+          state: present
+        loop:
+          - developers
+          - testers
+
+      - name: creating users and making them member of groups
+        user:
+          name: "{{ item.name }}"
+          groups: "{{ item.groups }}"
+          state: present
+        loop:
+          - name: fred
+            groups: developers
+          - name: frank
+            groups: testers

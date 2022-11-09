@@ -1,0 +1,12 @@
+---
+  - name: replacing some string
+    hosts: web
+    tasks:
+      - name: replcaing ansible to automation string in the hello.txt file
+        lineinfile:
+          path: /home/admin/mydocs/hello.txt
+          regexp: 'Automation'
+          line: 'Welcome to Automation world'
+          owner: root
+          group: root
+          mode: '0644'

@@ -1,0 +1,30 @@
+---
+  - name: installing and cofiguring httpd server
+    hosts: all
+    tasks:
+      - name: installing httpd pkg  
+        yum:
+          name: httpd
+          state: present
+      - name: start and enable httpd
+        service:
+          name: httpd
+          state: started
+          enabled: true
+      - name: opening http service in the firewall
+        firewalld:
+          service: http
+          state: enabled
+          permanent: true
+          immediate: true
+      - name: copying template file
+        template:
+          src: index.html.j2
+          dest: /var/www/html/index.html
+        notify:
+          - restart httpd
+    handlers:
+      - name: restart httpd
+        service:
+          name: httpd
+          state: restarted

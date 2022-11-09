@@ -1,0 +1,20 @@
+---
+  - name: testing block, rescue & always keyword
+    hosts: web
+    tasks:
+      - name: upgrading web server
+        block:
+          - name: updating httpd pkg
+            yum:
+              name: httpd
+              state: latest
+        rescue:
+          - name: revert back to the old version of httpd
+            yum:
+              name: httpd-1.0
+              state: absent
+        always:
+          - name: restart httpd
+            service:
+              name: httpd
+              state: restarted

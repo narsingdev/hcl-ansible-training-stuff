@@ -1,0 +1,27 @@
+---
+  - name: managing services
+    hosts: web
+    tasks:
+      - name: installing httpd, chrony & postfix pkg
+        yum:
+          name: 
+            - httpd
+            - chrony
+            - postfix
+          state: present
+
+      - name: enabling httpd service
+        service:
+          name: httpd
+          enabled: true
+
+      - name: enabling chronyd service
+        service:
+          name: chronyd
+          enabled: true
+
+      - name: enabling postfix service
+        service:
+          name: postfix
+          enabled: true
+

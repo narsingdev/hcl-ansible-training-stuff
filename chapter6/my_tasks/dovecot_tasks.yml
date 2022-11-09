@@ -1,0 +1,12 @@
+---
+  - name: starting and enabling dovecot service
+    service:
+      name: dovecot
+      state: started
+      enabled: true
+  - name: opening imap service in the firewall
+    firewalld:
+      service: imap
+      state: enabled
+      permanent: true
+      immediate: true

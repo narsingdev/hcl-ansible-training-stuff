@@ -1,0 +1,21 @@
+---
+  - name: installing and configuring httpd server
+    hosts: web
+    tasks:
+      - name: installing httpd pkg
+        yum:
+          name: httpd
+          state: present
+      - name: start and enable httpd
+        service:
+          name: httpd
+          state: started
+          enabled: true
+      - name: opening http service in the firewall
+        firewalld:
+          service: http
+          state: enabled
+          permanent: true
+          immediate: true
+  - name: importing mariadb.yml playbook
+    import_playbook: mariadb.yml

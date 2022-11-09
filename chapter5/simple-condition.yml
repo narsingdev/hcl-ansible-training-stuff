@@ -1,0 +1,11 @@
+---
+  - name: testing conditional based tasks
+    hosts: web
+    vars:
+      run_my_task: true
+    tasks:
+      - name: install nfs-utils pkg if condition true
+        yum:
+          name: nfs-utils
+          state: present
+        when: run_my_task

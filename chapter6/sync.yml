@@ -1,0 +1,12 @@
+---
+  - name: testing synchronize module
+    hosts: web
+    tasks:
+      - name: installing rsync pkg
+        yum:
+          name: rsync
+          state: present
+      - name: copying bulk of files from control node to managed node
+        synchronize:
+          src: mydir/
+          dest: /home/admin/mydocs/

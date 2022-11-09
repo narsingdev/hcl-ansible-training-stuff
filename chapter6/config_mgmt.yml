@@ -1,0 +1,30 @@
+---
+  - name: testing configuration management
+    hosts: web
+    vars: 
+      - ssh_port: 29
+      - root_allowed: false
+      - allow_groups: help_desk
+      - permissions_allowed: yes
+    tasks:
+      - name: opening port 29 in the firewall
+        firewalld:
+          port: 29/tcp
+          state: enabled
+          permanent: true
+          immediate: true
+      - name: selinux configuring in permissive mode
+        command: setenforce permissive
+
+      - name: deploying configuration management file
+        template:
+          src: my_ssh_config.j2
+          dest: /etc/ssh/sshd_config
+        notify:
+          - restart sshd
+    handlers:
+      - name: restart sshd
+        service:
+          name: sshd
+          state: restarted
+        

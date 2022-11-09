@@ -1,0 +1,8 @@
+---
+  - name: print various facts
+    hosts: web
+    tasks:
+      - name: print various ansible facts
+        debug:
+          msg: >
+            The default IPv4 address of {{ ansible_facts.fqdn }} is {{ ansible_facts.default_ipv4.address }} and target host name is {{ ansible_facts.hostname }}

@@ -1,0 +1,10 @@
+---
+  - name: upgrading web servers with serial keyword
+    hosts: all
+    serial: 1
+    tasks:
+      - name: updating httpd pkg
+        yum:
+          name: httpd
+          state: latest
+

@@ -1,0 +1,28 @@
+---
+  - name: Installing and configuring httpd server
+    hosts: web
+    tasks:
+      - name: installing httpd pkg
+        yum:
+          name: httpd
+          state: present
+
+      - name: start and enable httpd service
+        service:
+          name: httpd
+          state: started
+          enabled: true
+
+      - name: opening http service in the firewall
+        firewalld:
+          service: http
+          state: enabled
+          permanent: true
+          immediate: true
+
+      - name: creating smaple web page
+        copy: 
+          content: "<html> <center> <h1> Welcome to node1.lab.example.com </h1> </center> </html>"
+          dest: /var/www/html/index.html
+
+

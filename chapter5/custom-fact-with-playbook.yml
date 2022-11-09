@@ -1,0 +1,14 @@
+---
+  - name: testing my own custom fact
+    hosts: web
+    tasks:
+      - name: installing httpd pkg using custom fact
+        yum:
+          name: "{{ ansible_facts['ansible_local']['custom']['general']['pkg'] }}"
+          state: present
+      - name: start and enable httpd service
+        service:
+          name: "{{ ansible_facts['ansible_local']['custom']['general']['svc'] }}"
+          state: "{{ ansible_facts['ansible_local']['custom']['general']['state'] }}"
+          enabled: "{{ ansible_facts['ansible_local']['custom']['general']['enabled'] }}"
+

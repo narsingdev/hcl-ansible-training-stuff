@@ -1,0 +1,12 @@
+---
+  - name: testing playbook order
+    hosts: db
+    ignore_errors: yes
+    tasks:
+      - name: checking status of psacct.service
+        command: systemctl is-active psacct.service
+      - name: create user sam
+        user:
+          name: sam
+          state: present
+        

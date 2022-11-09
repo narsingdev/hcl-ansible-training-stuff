@@ -1,0 +1,13 @@
+---
+  - name: updating /home/admin/mydocs/hello.txt
+    hosts: web
+    tasks:
+      - name: adding some lines in hello.txt file
+        lineinfile:
+         path: /home/admin/mydocs/hello.txt
+         line: "Welcome to Automation world"
+         state: present
+         owner: admin
+         group: admin
+         mode: '0770'
+         state: present

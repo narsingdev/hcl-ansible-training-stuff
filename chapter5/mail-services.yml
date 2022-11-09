@@ -1,0 +1,21 @@
+---
+  - name: installing and configuring mail services
+    hosts: web
+    tasks:
+      - name: installing postfix, dovecot, & sendmail service
+        yum:
+          name: "{{ item }}"
+          state: present
+        loop:
+          - postfix
+          - dovecot
+          - sendmail
+      - name: starting and enabling postfix dovecot & sendmail service
+        service:
+          name: "{{ item }}"
+          state: started
+          enabled: true
+        loop:
+          - postfix
+          - dovecot
+          - sendmail

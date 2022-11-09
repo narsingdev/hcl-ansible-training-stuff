@@ -1,0 +1,11 @@
+---
+  - name: creating newbie user
+    hosts: web
+    tasks:
+      - name: adding newbie user
+        user:
+          name: newbie
+          uid: 4000
+          comment: "New Bie"
+          state: present
+

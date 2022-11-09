@@ -1,0 +1,5 @@
+[general]
+pkg=httpd
+svc=httpd
+state=started
+enabled=true

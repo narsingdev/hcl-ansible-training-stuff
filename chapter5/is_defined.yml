@@ -1,0 +1,11 @@
+---
+  - name: testing is defined statement
+    hosts: web
+    vars:
+      my_pkg: mariadb-server
+    tasks:
+      - name: install pkg if it is defined
+        yum:
+          name: "{{ my_pkg }}"
+          state: present
+        when: my_pkg is defined

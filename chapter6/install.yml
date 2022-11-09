@@ -1,0 +1,18 @@
+---
+  - name: creating multiple users
+    hosts: web
+    tasks:
+      - name: creating roy user
+        user:
+          name: roy
+          state: present
+      - name: creating sales group
+        group: 
+          name: sales
+          state: present
+      - name: installng nmap pkg
+        yum:
+          name: nmap
+          state: present
+
+

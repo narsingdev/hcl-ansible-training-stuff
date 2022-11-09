@@ -1,0 +1,12 @@
+---
+  - name: starting and enabling postfix service
+    service:
+      name: postfix
+      state: started
+      enabled: true
+  - name: opening pop3 service in the firewall
+    firewalld:
+      service: pop3
+      state: enabled
+      permanent: true
+      immediate: true

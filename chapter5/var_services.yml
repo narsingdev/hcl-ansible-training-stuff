@@ -1,0 +1,16 @@
+---
+  - name: testing loop with variable
+    hosts: db
+    vars:
+      mail_services:
+        - postfix
+        - sendmail
+        - dovecot
+    tasks:
+      - name: installing postfix, sendmail and dovecot pkgs
+        yum:
+          name: "{{ item }}"
+          state: present
+        loop: "{{ mail_services }}"
+          
+        

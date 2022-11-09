@@ -1,0 +1,29 @@
+---
+  - name: adding bulk of users
+    hosts: web
+    tasks:
+      - name: creating hank user
+        user:
+          name: hank
+          state: present
+     
+      - name: creating jack user
+        user:
+          name: jack
+          state: present
+     
+      - name: creating john user
+        user:
+          name: john
+          state: present
+     
+      - name: creating jenny user
+        user:
+          name: jenny
+          state: present
+     
+      - name: creating hank user
+        user:
+          name: rick
+          state: present
+     

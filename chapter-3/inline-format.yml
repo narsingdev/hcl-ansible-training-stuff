@@ -1,0 +1,6 @@
+---
+  - name: testing inline format playbook  
+    hosts: web
+    tasks:
+      - name: installing git pkg
+        yum: name=git state=present

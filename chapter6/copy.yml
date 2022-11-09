@@ -1,0 +1,13 @@
+---
+  - name: testing copy module
+    hosts: web
+    tasks:
+      - name: copying test.txt file to /home/admin/mydocs directory
+        copy:
+          src: test.txt
+          dest: /home/admin/mydocs/test.txt
+
+      - name: copy some lines in test.txt file
+        copy:
+          content: "This is second line"
+          dest: /home/admin/mydocs/test.txt

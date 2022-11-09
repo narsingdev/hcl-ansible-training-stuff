@@ -1,0 +1,12 @@
+---
+  - name: starting and enabling sendmail service
+    service:
+      name: sendmail
+      state: started
+      enabled: true
+  - name: opening smtp service in the firewall
+    firewalld:
+      service: smtp
+      state: enabled
+      permanent: true
+      immediate: true

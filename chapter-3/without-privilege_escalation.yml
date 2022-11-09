@@ -1,0 +1,9 @@
+---
+  - name: testing without playbook privilege escalation
+    hosts: web
+    tasks:
+      - name: creating jerry user
+        user:
+          name: jerry
+          state: present
+

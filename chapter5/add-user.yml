@@ -1,0 +1,9 @@
+---
+  - name: creating some users
+    hosts: web
+    gather_facts: yes
+    tasks:
+      - name: adding harry user
+        user:
+          name: harry
+          state: present

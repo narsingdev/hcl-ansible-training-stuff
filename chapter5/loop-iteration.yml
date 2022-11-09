@@ -1,0 +1,12 @@
+---
+  - name: testing loop iteration
+    hosts: web
+    tasks:
+      - name: printing multiple statement
+        shell: echo " Welcome to" "{{ item }}"
+        loop:
+          - India Gate
+          - Gateway of India
+        register: echo_results
+      - name: printing previous output
+        debug: var=echo_results

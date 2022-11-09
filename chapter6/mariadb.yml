@@ -1,0 +1,20 @@
+---
+  - name: installing and configuring mariadb server
+    hosts: web
+    tasks:
+      - name: installing mariadb pkg
+        yum:
+          name: mariadb-server
+          state: present
+      - name: start and enable mariadb
+        service:
+          name: mariadb
+          state: started
+          enabled: true
+      - name: opening mysql service in the firewall
+        firewalld:
+          service: mysql
+          state: enabled
+          permanent: true
+          immediate: true
+

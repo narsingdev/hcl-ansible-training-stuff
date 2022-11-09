@@ -1,0 +1,11 @@
+---
+  - name: testing per playbook privilege escalation
+    hosts: web
+    remote_user: admin
+    become: true
+    tasks:
+      - name: creating tom user
+        user:
+          name: tom
+          state: present
+

@@ -1,0 +1,11 @@
+---
+  - name: testing sefcontext module
+    hosts: web
+    tasks:
+      - name: applying samba_share_t context to hello.txt file
+        sefcontext:
+          target: /home/admin/mydocs/hello.txt
+          setype: samba_share_t
+          state: present
+      - name: re-read the context 
+        command: restorecon -R -v /home/admin/mydocs/hello.txt

@@ -1,0 +1,15 @@
+---
+  - name: testing block
+    hosts: web
+    tasks:
+      - name: performing multiple tasks based on conditions
+        block:
+        - name: creating eric user
+          user:
+            name: eric
+            state: present
+        - name: creating help_desk group
+          group:
+            name: help_desk
+            state: present
+        when: ansible_distribution == "RedHat"

@@ -1,0 +1,12 @@
+---
+  - name: testing with_file 
+    hosts: web
+    tasks:
+      - name: creating file1.txt file3.txt files
+        file:
+          state: touch
+          src: "{{ item }}"
+          path: /home/admin/
+        with_file:
+          - file1.txt
+          - file2.txt

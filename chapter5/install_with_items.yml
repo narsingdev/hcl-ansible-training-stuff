@@ -1,0 +1,14 @@
+---
+  - name: testing with_items
+    hosts: web
+    tasks:
+      - name: installing git, nmap, ftp pkgs
+        yum:
+          name: "{{ item }}"
+          state: present
+        with_items:
+          - git
+          - nmap
+          - ftp
+          - cifs-utils
+        

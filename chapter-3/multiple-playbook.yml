@@ -1,0 +1,54 @@
+---
+  - name: Installing and configuring httpd server
+    hosts: web
+    tasks:
+      - name: installing httpd pkg
+        yum:
+          name: httpd
+          state: present
+
+      - name: start and enable httpd service
+        service:
+          name: httpd
+          state: started
+          enabled: true
+
+      - name: opening http service in the firewall
+        firewalld:
+          service: http
+          state: enabled
+          permanent: true
+          immediate: true
+
+      - name: creating smaple web page
+        copy: 
+          content: "<html> <center> <h1> Welcome to node1.lab.example.com </h1> </center> </html>"
+          dest: /var/www/html/index.html
+
+  - name: installing and configuring mariadb 
+    hosts: db
+    tasks:
+      - name: installing mariadb-server pkg
+        yum:
+          name: mariadb-server
+          state: present
+
+      - name: start and enable mariadb service
+        service:
+          name: mariadb
+          state: started
+          enabled: true
+
+      - name: opening mysql service in the firewall
+        firewalld:
+          service: mysql
+          state: enabled
+          permanent: true
+          immediate: true
+
+
+
+
+
+
+

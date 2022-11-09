@@ -1,0 +1,21 @@
+---
+  - name: installing and configuring mail services
+    hosts: db
+    tasks:
+      - name: installing sendmail, postfix & dovecot pkgs
+        yum:
+          name: "{{ item }}"
+          state: present
+        loop:
+          - sendmail
+          - postfix
+          - dovecot
+
+      - name: importing sendmail tasks
+        include_tasks: my_tasks/sendmail_tasks.yml
+
+      - name: importing postfix tasks
+        include_tasks: my_tasks/postfix_tasks.yml
+
+      - name: importing dovecot tasks
+        include_tasks: my_tasks/dovecot_tasks.yml

@@ -1,0 +1,9 @@
+---
+  - name: playbook writing in the verticle format
+    hosts: web
+    tasks:
+      - name: installing namp package
+        yum:
+          name: nmap
+          state: present
+        

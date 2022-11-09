@@ -1,0 +1,8 @@
+---
+  - name: fetching some files
+    hosts: web
+    tasks:
+      - name: fetching hello.txt file 
+        fetch:
+          src: /home/admin/mydocs/hello.txt
+          dest: /home/admin/project/

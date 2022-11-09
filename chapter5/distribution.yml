@@ -1,0 +1,15 @@
+---
+  - name: testing in statement
+    hosts: web
+    vars:
+      supported_distros:
+        - CentOS
+        - Ubuntu
+        - Fedora
+        - RedHat
+    tasks:
+      - name: install samba pkg if distribution supported
+        yum:
+          name: samba
+          state: present
+        when: ansible_distribution in supported_distros
